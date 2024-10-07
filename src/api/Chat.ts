@@ -13,7 +13,7 @@ export default class Chat {
         clarifyingResponses;
 
       //setTimeout to simulate bot's response time
-      const nbSeconds = Math.floor(Math.random() * 3000) + 1;
+      const nbSeconds = Math.floor(Math.random() * 2) + 1;
       setTimeout(() => {
         const lowerInput = input.toLowerCase();
 
@@ -42,7 +42,7 @@ export default class Chat {
         }
 
         resolve(response);
-      }, nbSeconds);
+      }, nbSeconds * 1000);
     });
   };
 }
