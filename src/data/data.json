@@ -3,6 +3,7 @@
     {
       "keywords": [
         "what is reactjs",
+        "react js",
         "reactjs",
         "react library",
         "react javascript framework"
@@ -106,7 +107,12 @@
       }
     },
     {
-      "keywords": ["usememo", "what is usememo", "usememo hook"],
+      "keywords": [
+        "usememo",
+        "what is usememo",
+        "usememo hook",
+        "use memo hook"
+      ],
       "response": "The **useMemo** hook returns a memoized value that will only be recalculated when one of its dependencies changes. This functionality is beneficial for optimizing performance by avoiding costly calculations on every render, making your application more efficient. Here’s an example of using useMemo:\n\n```javascript\nconst memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);\n```",
       "followUpQuestion": {
         "question": "Would you like to learn how to use useMemo for performance optimization?",

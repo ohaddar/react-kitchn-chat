@@ -1,12 +1,4 @@
-import {
-  Button,
-  Error,
-  Input,
-  KeyCode,
-  KeyMod,
-  useCurrentState,
-  useKeyboard,
-} from "kitchn";
+import { Input, KeyCode, useCurrentState, useKeyboard } from "kitchn";
 import { RiArrowUpCircleLine } from "react-icons/ri";
 
 interface inputProps {
@@ -39,8 +31,14 @@ const ChatInput = ({ addMessage }: inputProps) => {
     <>
       <Input
         placeholder="Enter your question here..."
+        type="secondary"
+        style={{ color: "#ddd" }}
         suffix={
-          <RiArrowUpCircleLine cursor={"pointer"} onClick={handleSubmit} />
+          <RiArrowUpCircleLine
+            cursor={"pointer"}
+            color="rgb(70, 38, 228)"
+            onClick={handleSubmit}
+          />
         }
         value={localInput}
         onChange={handleChange}

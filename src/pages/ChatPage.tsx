@@ -14,6 +14,7 @@ import { Message } from "../types/type";
 import "./style.css";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import BotWelcomeMessage from "../components/BotWelcomeMessage";
 
 export const ChatPage = () => {
   const [messages, setMessages] = useCurrentState<Message[]>([]);
@@ -61,6 +62,7 @@ export const ChatPage = () => {
       justify="space-between"
       m={"auto"}
     >
+      {messages.length === 0 && <BotWelcomeMessage addMessage={addMessage} />}
       <Scroller w={"100%"} h={"100%"}>
         {messages.map((message, index) => (
           <Container key={index}>
@@ -68,7 +70,7 @@ export const ChatPage = () => {
             {message.Sender === "User" && (
               <Container
                 p={"10px"}
-                style={{ alignSelf: "end" }}
+                style={{ alignSelf: "end", color: "#e0e0e0" }}
                 className="chat-bubble-user"
               >
                 {message.Content}
@@ -78,7 +80,11 @@ export const ChatPage = () => {
               <>
                 <Container
                   p={"10px"}
-                  style={{ alignSelf: "start", lineHeight: "1.6em" }}
+                  style={{
+                    alignSelf: "start",
+                    lineHeight: "1.6em",
+                    color: "#e0e0e0",
+                  }}
                 >
                   <Markdown remarkPlugins={[remarkGfm]}>
                     {message.Content}
