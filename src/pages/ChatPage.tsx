@@ -1,20 +1,11 @@
-import {
-  Container,
-  Scroller,
-  Spacer,
-  Spinner,
-  useBreakpoint,
-  useCurrentState,
-} from "kitchn";
+import { Container, Spacer, useBreakpoint, useCurrentState } from "kitchn";
 import ChatInput from "../components/ChatInput";
 import { useEffect, useRef } from "react";
 import Chat from "../api/Chat";
 import { Message } from "../types/type";
-
 import "./style.css";
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import BotWelcomeMessage from "../components/BotWelcomeMessage";
+import BotWelcomeMessage from "../components/welcome/BotWelcomeMessage";
+import MessageList from "../components/MessageList";
 
 export const ChatPage = () => {
   const [messages, setMessages] = useCurrentState<Message[]>([]);
@@ -63,40 +54,11 @@ export const ChatPage = () => {
       m={"auto"}
     >
       {messages.length === 0 && <BotWelcomeMessage addMessage={addMessage} />}
-      <Scroller w={"100%"} h={"100%"}>
-        {messages.map((message, index) => (
-          <Container key={index}>
-            {index > 0 && <Spacer y={2} />}
-            {message.Sender === "User" && (
-              <Container
-                p={"10px"}
-                style={{ alignSelf: "end", color: "#e0e0e0" }}
-                className="chat-bubble-user"
-              >
-                {message.Content}
-              </Container>
-            )}
-            {message.Sender === "Bot" && (
-              <>
-                <Container
-                  p={"10px"}
-                  style={{
-                    alignSelf: "start",
-                    lineHeight: "1.6em",
-                    color: "#e0e0e0",
-                  }}
-                >
-                  <Markdown remarkPlugins={[remarkGfm]}>
-                    {message.Content}
-                  </Markdown>
-                </Container>
-              </>
-            )}
-          </Container>
-        ))}
-        {loading && <Spinner />}
-        <Container ref={scrollRef}></Container>
-      </Scroller>
+      <MessageList
+        messages={messages}
+        loading={loading}
+        scrollRef={scrollRef}
+      />
       <Spacer y={1} />
       <ChatInput addMessage={addMessage} />
     </Container>

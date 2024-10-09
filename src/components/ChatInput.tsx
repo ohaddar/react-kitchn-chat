@@ -28,27 +28,25 @@ const ChatInput = ({ addMessage }: inputProps) => {
     disableGlobalEvent: true,
   });
   return (
-    <>
-      <Input
-        placeholder="Enter your question here..."
-        type="secondary"
-        style={{ color: "#ddd" }}
-        suffix={
-          <RiArrowUpCircleLine
-            cursor={"pointer"}
-            color="rgb(70, 38, 228)"
-            onClick={handleSubmit}
-          />
-        }
-        value={localInput}
-        onChange={handleChange}
-        required
-        clearable
-        error={error}
-        size="large"
-        {...bindings}
-      ></Input>
-    </>
+    <Input
+      placeholder="Enter your question here..."
+      type="secondary"
+      style={{ color: "#ddd" }}
+      suffix={
+        <RiArrowUpCircleLine
+          cursor={"pointer"}
+          color="rgb(70, 38, 228)"
+          onClick={handleSubmit}
+        />
+      }
+      value={localInput}
+      onChange={handleChange}
+      required
+      clearable
+      error={error}
+      size="large"
+      {...bindings}
+    />
   );
 };
 export default ChatInput;
