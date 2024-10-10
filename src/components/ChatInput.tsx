@@ -31,7 +31,7 @@ const ChatInput = ({ addMessage }: inputProps) => {
     <Input
       placeholder="Enter your question here..."
       type="secondary"
-      style={{ color: "#ddd" }}
+      color="#ddd"
       suffix={
         <RiArrowUpCircleLine
           cursor={"pointer"}

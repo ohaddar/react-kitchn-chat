@@ -1,9 +1,20 @@
-import { Button, Container } from "kitchn";
+import { Button, useBreakpoint } from "kitchn";
+import WelcomeContainer from "./WelcomeSuggesstions.styled";
 interface welcomeSuggesstionProps {
   addMessage: (text: string) => void;
 }
 
 const WelcomeSuggesstions = ({ addMessage }: welcomeSuggesstionProps) => {
+  const { isMobile } = useBreakpoint();
+  const calculateContainerWidth = (): string => {
+    return isMobile ? "400px" : "500px";
+  };
+  const calculateButtonWidth = (): string => {
+    return isMobile ? "154px" : "200px";
+  };
+  const calculateButtonMargin = (): string => {
+    return isMobile ? "15px" : "5px";
+  };
   const handleButtonClick =
     (text: string): React.MouseEventHandler<HTMLButtonElement> =>
     () => {
@@ -17,30 +28,24 @@ const WelcomeSuggesstions = ({ addMessage }: welcomeSuggesstionProps) => {
   ];
 
   return (
-    <Container
-      display="grid"
-      w={"500px"}
-      m={"auto"}
-      style={{
-        gridTemplateColumns: "repeat(2, 1fr)",
-        justifyItems: "center",
-      }}
-    >
+    <WelcomeContainer width={calculateContainerWidth()}>
       {suggesstins.map((item, index) => (
         <Button
-          w={"200px"}
+          w={calculateButtonWidth()}
           p={"30px"}
           variant={"ghost"}
-          m={"5px"}
+          m={calculateButtonMargin()}
           type={"primary"}
-          style={{ border: "1px solid rgb(34, 34, 36) " }}
+          bs="solid"
+          bc="rgb(34, 34, 36)"
+          bw="1px"
           key={index}
           onClick={handleButtonClick(item)}
         >
           {item}
         </Button>
       ))}
-    </Container>
+    </WelcomeContainer>
   );
 };
 export default WelcomeSuggesstions;

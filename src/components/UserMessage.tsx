@@ -1,19 +1,11 @@
-import { Container, Spacer } from "kitchn";
 import { Message } from "../types/type";
+import UserMessageContainer from "./UserMessage.styled";
 
 interface userMessageProps {
   message: Message;
 }
 
 const UserMessage = ({ message }: userMessageProps) => {
-  return (
-    <Container
-      p={"10px"}
-      style={{ alignSelf: "end", color: "#e0e0e0" }}
-      className="chat-bubble-user"
-    >
-      {message.Content}
-    </Container>
-  );
+  return <UserMessageContainer>{message.Content}</UserMessageContainer>;
 };
 export default UserMessage;

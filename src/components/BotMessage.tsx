@@ -1,7 +1,7 @@
-import { Container } from "kitchn";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Message } from "../types/type";
+import BotMessageContainer from "./BotMessage.styled";
 
 interface botMessageProps {
   message: Message;
@@ -10,16 +10,9 @@ interface botMessageProps {
 const BotMessage = ({ message }: botMessageProps) => {
   return (
     <>
-      <Container
-        p={"10px"}
-        style={{
-          alignSelf: "start",
-          lineHeight: "1.6em",
-          color: "#e0e0e0",
-        }}
-      >
+      <BotMessageContainer>
         <Markdown remarkPlugins={[remarkGfm]}>{message.Content}</Markdown>
-      </Container>
+      </BotMessageContainer>
     </>
   );
 };

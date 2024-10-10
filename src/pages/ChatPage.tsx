@@ -3,7 +3,6 @@ import ChatInput from "../components/ChatInput";
 import { useEffect, useRef } from "react";
 import Chat from "../api/Chat";
 import { Message } from "../types/type";
-import "./style.css";
 import BotWelcomeMessage from "../components/welcome/BotWelcomeMessage";
 import MessageList from "../components/MessageList";
 
