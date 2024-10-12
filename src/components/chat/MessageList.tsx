@@ -1,7 +1,7 @@
 import { Container, Scroller, Spacer, Spinner } from "kitchn";
 import UserMessage from "./UserMessage";
 import BotMessage from "./BotMessage";
-import { Message } from "../types/type";
+import { Message } from "../../types/type";
 import { RefObject } from "react";
 
 interface messageListProps {

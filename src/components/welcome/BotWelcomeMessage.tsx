@@ -3,12 +3,13 @@ import WelcomeSuggesstions from "./WelcomeSuggesstions";
 
 interface welcomeProps {
   addMessage: (text: string) => void;
+  username: string | undefined;
 }
 
-const BotWelcomeMessage = ({ addMessage }: welcomeProps) => {
+const BotWelcomeMessage = ({ addMessage, username }: welcomeProps) => {
   return (
     <>
-      <WelcomeText />
+      <WelcomeText username={username} />
       <WelcomeSuggesstions addMessage={addMessage} />
     </>
   );

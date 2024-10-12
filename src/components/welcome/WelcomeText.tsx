@@ -1,10 +1,14 @@
 import { Container, Text } from "kitchn";
 
-const WelcomeText = () => {
+interface welcomeTextProps {
+  username: string | undefined;
+}
+
+const WelcomeText = ({ username }: welcomeTextProps) => {
   return (
     <Container m={"50px auto"} display="flex" align="center">
       <Text weight={"bold"} monospace p={"10px"} color="#e0e0e0">
-        Hello! 👋
+        Hello {username}! 👋
       </Text>
       <Text monospace color="#e0e0e0">
         I'm your virtual assistant.

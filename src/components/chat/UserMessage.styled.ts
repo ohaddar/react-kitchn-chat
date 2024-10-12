@@ -1,6 +1,7 @@
 import kitchn from "kitchn";
 
 const UserMessageContainer = kitchn.div`
+margin-top: 15px;
 background-color: rgb(70, 38, 228);
 border-radius: 20px;
 padding: 20px !important;

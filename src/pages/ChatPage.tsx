@@ -1,12 +1,17 @@
 import { Container, Spacer, useBreakpoint, useCurrentState } from "kitchn";
-import ChatInput from "../components/ChatInput";
+import ChatInput from "../components/chat/ChatInput";
 import { useEffect, useRef } from "react";
 import Chat from "../api/Chat";
 import { Message } from "../types/type";
 import BotWelcomeMessage from "../components/welcome/BotWelcomeMessage";
-import MessageList from "../components/MessageList";
+import MessageList from "../components/chat/MessageList";
 
-export const ChatPage = () => {
+interface ChatPageProps {
+  username: string | undefined;
+  userAvatar: string | undefined;
+}
+
+export const ChatPage = ({ username, userAvatar }: ChatPageProps) => {
   const [messages, setMessages] = useCurrentState<Message[]>([]);
   const [loading, setLoading] = useCurrentState<Boolean>(false);
   const { isMobile } = useBreakpoint();
@@ -17,6 +22,7 @@ export const ChatPage = () => {
     const userMessage: Message = {
       Content: text,
       Sender: "User",
+      Avatar: userAvatar,
     };
     setMessages([...messages, userMessage]);
     setLoading(true);
@@ -29,6 +35,7 @@ export const ChatPage = () => {
         const botResponse: Message = {
           Content: response,
           Sender: "Bot",
+          Avatar: "",
         };
         setLoading(false);
 
@@ -52,7 +59,9 @@ export const ChatPage = () => {
       justify="space-between"
       m={"auto"}
     >
-      {messages.length === 0 && <BotWelcomeMessage addMessage={addMessage} />}
+      {messages.length === 0 && (
+        <BotWelcomeMessage addMessage={addMessage} username={username} />
+      )}
       <MessageList
         messages={messages}
         loading={loading}
